@@ -5,7 +5,7 @@ interface InputProps {
   name?: string,
   value?: string,
   placeholder?: string,
-  onChange?: ChangeEventHandler,
+  onChange?: ChangeEventHandler<HTMLInputElement>,
   maxLength?: number,
   disabled?: boolean,
 }
