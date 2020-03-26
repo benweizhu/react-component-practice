@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 interface ButtonProps {
   children?: React.ReactNode,
@@ -7,6 +7,7 @@ interface ButtonProps {
   href?: string,
   type?: 'primary' | 'secondary',
   className?: string,
+  onClick?: MouseEventHandler,
 }
 
 export default function Button(props: ButtonProps) {
@@ -18,7 +19,9 @@ export default function Button(props: ButtonProps) {
       <a
         id={props.id}
         href={props.href}
-        className={getClassName(typeClassName, props.className)}>
+        onClick={props.onClick}
+        className={getClassName(typeClassName, props.className)}
+      >
         {props.children}
       </a>)
   }
@@ -26,7 +29,9 @@ export default function Button(props: ButtonProps) {
     <button
       id={props.id}
       name={props.name}
-      className={getClassName(typeClassName, props.className).trim()} >
+      onClick={props.onClick}
+      className={getClassName(typeClassName, props.className).trim()}
+    >
       {props.children}
     </button>
   )
