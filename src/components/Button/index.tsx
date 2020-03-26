@@ -6,8 +6,10 @@ interface ButtonProps {
   id?: string,
   name?: string,
   href?: string,
+  target?: string,
   type?: 'primary' | 'secondary',
   className?: string,
+  disabled?: boolean,
   onClick?: MouseEventHandler,
   children?: React.ReactNode,
 }
@@ -18,6 +20,7 @@ export default function Button(props: ButtonProps) {
       <a
         id={props.id}
         href={props.href}
+        target={props.target}
         onClick={props.onClick}
         className={getClassName(props.className, props.type)}
       >
@@ -26,6 +29,7 @@ export default function Button(props: ButtonProps) {
   }
   return (
     <button
+      disabled={props.disabled}
       id={props.id}
       name={props.name}
       onClick={props.onClick}
