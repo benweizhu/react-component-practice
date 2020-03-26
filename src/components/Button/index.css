@@ -1,3 +1,19 @@
 .practice-button {
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.practice-button-primary {
+  color: white;
+  border: 1px solid brown;
+  background: brown;
+}
+
+.practice-button a {
+  text-decoration: none;
+}
+
+.practice-button button {
 
 }

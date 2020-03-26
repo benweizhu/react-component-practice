@@ -1,26 +1,25 @@
 import React, { MouseEventHandler } from "react";
 
+import './index.css'
+
 interface ButtonProps {
-  children?: React.ReactNode,
   id?: string,
   name?: string,
   href?: string,
   type?: 'primary' | 'secondary',
   className?: string,
   onClick?: MouseEventHandler,
+  children?: React.ReactNode,
 }
 
 export default function Button(props: ButtonProps) {
-
-  let typeClassName = getTypeClassName(props);
-
   if (props.href) {
     return (
       <a
         id={props.id}
         href={props.href}
         onClick={props.onClick}
-        className={getClassName(typeClassName, props.className)}
+        className={getClassName(props.className, props.type)}
       >
         {props.children}
       </a>)
@@ -30,25 +29,26 @@ export default function Button(props: ButtonProps) {
       id={props.id}
       name={props.name}
       onClick={props.onClick}
-      className={getClassName(typeClassName, props.className).trim()}
+      className={getClassName(props.className, props.type).trim()}
     >
       {props.children}
     </button>
   )
 }
 
-function getTypeClassName(props: ButtonProps) {
+function getClassName(className?: string, type?: string): string {
+  let typeClassName = getTypeClassName(type);
+  return `practice-button ${typeClassName} ${className ? className : ''}`.trim();
+}
+
+function getTypeClassName(type?: string) {
   let typeClassName;
-  if (props.type === 'primary') {
+  if (type === 'primary') {
     typeClassName = 'practice-button-primary';
-  } else if (props.type === 'secondary') {
+  } else if (type === 'secondary') {
     typeClassName = 'practice-button-secondary';
   } else {
     typeClassName = 'practice-button-primary';
   }
   return typeClassName;
-}
-
-function getClassName(typeClassName: string, className?: string): string {
-  return `practice-button ${typeClassName} ${className ? className : ''}`.trim();
 }
