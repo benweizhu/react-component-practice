@@ -2,6 +2,7 @@
   outline: none;
   cursor: pointer;
   font-size: 14px;
+  padding: 8px 25px;
 }
 
 .practice-button-primary {
@@ -10,10 +11,15 @@
   background: brown;
 }
 
-.practice-button a {
+.practice-button-primary:hover {
+  border: 1px solid #ce2121;
+  background: #ce2121;
+}
+
+a.practice-button {
   text-decoration: none;
 }
 
-.practice-button button {
+button.practice-button  {
 
 }
