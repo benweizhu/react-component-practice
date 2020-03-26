@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <div>
         <Button id="myButton" type="primary" name="myButton">Hello</Button>
-        <Button id="myLinkButton" type="primary" href="www.baidu.com">Hello Link</Button>
+        <Button id="myLinkButton" type="secondary" href="www.baidu.com">Hello Link</Button>
       </div>
     </div>
   );
