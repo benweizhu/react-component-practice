@@ -1,25 +1,42 @@
 import React from 'react';
-import Button from './components/Button';
+
+import { Router, Link, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 
 import './App.css';
-import Input from './components/Form/Input';
-
+import InputPage from './pages/InputPage';
 function App() {
+  const history = createBrowserHistory();
   return (
-    <div className="App">
+    <Router history={history}>
       <div>
-        <Button id="myButton" type="primary" buttonType="button" name="myButton" className="hello" onClick={() => { console.log('Hello Button') }}>Hello Button</Button>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/input">input</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/input">
+            <InputPage />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-      <br />
-      <div>
-        <Button id="myLinkButton" type="primary" target="_blank" href="https://www.google.com" className="hello link" onClick={() => { console.log('Hello Link') }}>Hello Button</Button>
-      </div>
-      <br />
-      <div>
-        <Input />
-      </div>
-    </div>
+    </Router>
   );
+}
+
+function Home() {
+  return (
+    <div></div>
+  )
 }
 
 export default App;
