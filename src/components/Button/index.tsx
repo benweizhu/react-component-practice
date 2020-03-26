@@ -8,6 +8,7 @@ interface ButtonProps {
   href?: string,
   target?: string,
   type?: 'primary' | 'secondary',
+  buttonType?: 'submit' | 'reset' | 'button',
   className?: string,
   disabled?: boolean,
   onClick?: MouseEventHandler,
@@ -30,6 +31,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button
       disabled={props.disabled}
+      type={props.buttonType || 'button'}
       id={props.id}
       name={props.name}
       onClick={props.onClick}
