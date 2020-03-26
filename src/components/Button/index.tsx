@@ -5,7 +5,7 @@ interface ButtonProps {
   id?: string,
   name?: string,
   href?: string,
-  type: 'primary' | 'secondary',
+  type?: 'primary' | 'secondary',
   className?: string,
 }
 
@@ -18,7 +18,7 @@ export default function Button(props: ButtonProps) {
       <a
         id={props.id}
         href={props.href}
-        className={`practice-button ${typeClassName} ${props.className ? props.className : ''}`.trim()}>
+        className={getClassName(typeClassName, props.className)}>
         {props.children}
       </a>)
   }
@@ -26,7 +26,7 @@ export default function Button(props: ButtonProps) {
     <button
       id={props.id}
       name={props.name}
-      className={`practice-button ${typeClassName} ${props.className ? props.className : ''}`.trim()} >
+      className={getClassName(typeClassName, props.className).trim()} >
       {props.children}
     </button>
   )
@@ -36,9 +36,14 @@ function getTypeClassName(props: ButtonProps) {
   let typeClassName;
   if (props.type === 'primary') {
     typeClassName = 'practice-button-primary';
-  }
-  if (props.type === 'secondary') {
+  } else if (props.type === 'secondary') {
     typeClassName = 'practice-button-secondary';
+  } else {
+    typeClassName = 'practice-button-primary';
   }
   return typeClassName;
+}
+
+function getClassName(typeClassName: string, className?: string): string {
+  return `practice-button ${typeClassName} ${className ? className : ''}`.trim();
 }
