@@ -1,10 +1,12 @@
 import React from 'react';
-
 import { Router, Link, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 
-import './App.css';
 import InputPage from './pages/InputPage';
+import ButtonPage from './pages/ButtonPage';
+
+import './App.css';
+
 function App() {
   const history = createBrowserHistory();
   return (
@@ -18,16 +20,24 @@ function App() {
             <li>
               <Link to="/input">input</Link>
             </li>
+            <li>
+              <Link to="/button">button</Link>
+            </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path="/input">
-            <InputPage />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <div className="page-container">
+          <Switch>
+            <Route path="/input">
+              <InputPage />
+            </Route>
+            <Route path="/button">
+              <ButtonPage />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   );
